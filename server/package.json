@@ -1,11 +1,12 @@
 {
-  "name": "weatherapp_vanillanode",
+  "name": "server",
   "version": "1.0.0",
-  "description": "basic weather app",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "description": ""
 }
