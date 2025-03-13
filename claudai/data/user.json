@@ -1,0 +1,20 @@
+[
+  {
+    "id": "f47ac10b-58cc-4372-a567-0e02b2c3d479",
+    "email": "user@example.com",
+    "passwordHash": "9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08",
+    "passwordSalt": "0123456789abcdef",
+    "name": "Demo User",
+    "role": "user",
+    "favorites": [
+      "New York",
+      "London",
+      {
+        "lat": 35.6762,
+        "lon": 139.6503
+      }
+    ],
+    "createdAt": "2025-03-01T00:00:00.000Z",
+    "updatedAt": "2025-03-01T00:00:00.000Z"
+  }
+]

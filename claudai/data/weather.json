@@ -1,0 +1,183 @@
+{
+  "cities": {
+    "new york": {
+      "name": "New York",
+      "coordinates": {
+        "lat": 40.7128,
+        "lon": -74.006
+      },
+      "current": {
+        "timestamp": "2025-03-08T12:00:00.000Z",
+        "temperature": 15,
+        "feelsLike": 13,
+        "humidity": 65,
+        "windSpeed": 12,
+        "windDirection": 270,
+        "pressure": 1012,
+        "uv": 3,
+        "visibility": 8,
+        "weather": "Partly Cloudy",
+        "icon": "cloud-sun"
+      },
+      "forecast": [
+        {
+          "date": "2025-03-09",
+          "temperature": {
+            "min": 12,
+            "max": 18
+          },
+          "humidity": 62,
+          "windSpeed": 10,
+          "precipitation": 20,
+          "weather": "Partly Cloudy"
+        },
+        {
+          "date": "2025-03-10",
+          "temperature": {
+            "min": 13,
+            "max": 20
+          },
+          "humidity": 58,
+          "windSpeed": 8,
+          "precipitation": 10,
+          "weather": "Clear"
+        },
+        {
+          "date": "2025-03-11",
+          "temperature": {
+            "min": 14,
+            "max": 22
+          },
+          "humidity": 55,
+          "windSpeed": 7,
+          "precipitation": 5,
+          "weather": "Clear"
+        },
+        {
+          "date": "2025-03-12",
+          "temperature": {
+            "min": 15,
+            "max": 21
+          },
+          "humidity": 60,
+          "windSpeed": 12,
+          "precipitation": 30,
+          "weather": "Partly Cloudy"
+        },
+        {
+          "date": "2025-03-13",
+          "temperature": {
+            "min": 13,
+            "max": 18
+          },
+          "humidity": 70,
+          "windSpeed": 15,
+          "precipitation": 60,
+          "weather": "Rain"
+        },
+        {
+          "date": "2025-03-14",
+          "temperature": {
+            "min": 11,
+            "max": 16
+          },
+          "humidity": 75,
+          "windSpeed": 10,
+          "precipitation": 80,
+          "weather": "Rain"
+        },
+        {
+          "date": "2025-03-15",
+          "temperature": {
+            "min": 12,
+            "max": 17
+          },
+          "humidity": 68,
+          "windSpeed": 8,
+          "precipitation": 40,
+          "weather": "Light Rain"
+        }
+      ],
+      "historical": [
+        {
+          "date": "2025-03-07",
+          "temperature": {
+            "min": 14,
+            "max": 19
+          },
+          "humidity": 63,
+          "windSpeed": 11,
+          "precipitation": 15,
+          "weather": "Partly Cloudy"
+        },
+        {
+          "date": "2025-03-06",
+          "temperature": {
+            "min": 12,
+            "max": 18
+          },
+          "humidity": 65,
+          "windSpeed": 14,
+          "precipitation": 40,
+          "weather": "Light Rain"
+        },
+        {
+          "date": "2025-03-05",
+          "temperature": {
+            "min": 11,
+            "max": 16
+          },
+          "humidity": 72,
+          "windSpeed": 18,
+          "precipitation": 75,
+          "weather": "Rain"
+        },
+        {
+          "date": "2025-03-04",
+          "temperature": {
+            "min": 10,
+            "max": 15
+          },
+          "humidity": 78,
+          "windSpeed": 20,
+          "precipitation": 90,
+          "weather": "Heavy Rain"
+        },
+        {
+          "date": "2025-03-03",
+          "temperature": {
+            "min": 12,
+            "max": 17
+          },
+          "humidity": 70,
+          "windSpeed": 15,
+          "precipitation": 50,
+          "weather": "Rain"
+        },
+        {
+          "date": "2025-03-02",
+          "temperature": {
+            "min": 13,
+            "max": 19
+          },
+          "humidity": 60,
+          "windSpeed": 12,
+          "precipitation": 20,
+          "weather": "Partly Cloudy"
+        },
+        {
+          "date": "2025-03-01",
+          "temperature": {
+            "min": 15,
+            "max": 22
+          },
+          "humidity": 55,
+          "windSpeed": 8,
+          "precipitation": 5,
+          "weather": "Clear"
+        }
+      ]
+    }
+  },
+  "coordinates": {}
+}
