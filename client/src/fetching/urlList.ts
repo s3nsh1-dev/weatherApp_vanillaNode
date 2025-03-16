@@ -4,5 +4,8 @@ export const openMetroWeatherAPI: string =
 export const placeholderURL: string =
   "https://jsonplaceholder.typicode.com/posts";
 
-export const OpenStreetMapAPI: string =
-  "https://nominatim.openstreetmap.org/search?q=New+York&format=json";
+export const OpenStreetMapAPI = (term: string): string => {
+  console.log("change triggered:", term);
+  const updateTerm = term.replace(" ", "+");
+  return `https://nominatim.openstreetmap.org/search?q=${updateTerm}&format=json`;
+};
