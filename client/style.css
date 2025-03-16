@@ -2,9 +2,10 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 html {
-  background-image: url("./public/images/weatherApp\ background.jpg");
+  background-image: url("./public/images/weatherApp_background.jpg");
 }
 #header {
   display: flex;
@@ -12,4 +13,83 @@ html {
   align-items: center;
   padding: 10px;
   background-color: rgb(152, 240, 255);
+}
+
+.front-card-one {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid black;
+  box-shadow: 2px 2px 15px black;
+  border-radius: 10px;
+  width: 400px;
+  height: 400px;
+  /* margin: 10px; */
+}
+.front-card-two {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid black;
+  box-shadow: 2px 2px 15px black;
+  border-radius: 10px;
+  width: 400px;
+  height: 400px;
+  padding-top: 20px;
+}
+
+#user-choice {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 50px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20vh;
+}
+
+#this-or-this {
+  position: relative;
+  height: 100px;
+  width: 100px;
+  color: white;
+  font-weight: bold;
+  font-size: 2.3rem;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 5px solid green;
+}
+
+#choice-result {
+  border: 2px solid black;
+  width: 80vw;
+  height: 80vh;
+  margin: 3% auto;
+  border-radius: 10px;
+  box-shadow: 2px 2px 15px black;
+}
+
+#switch-panel {
+  display: flex;
+  justify-content: center;
+}
+#switch-to-weather {
+  background-color: seagreen;
+}
+#switch-to-forecast {
+  background-color: snow;
+}
+.divButtons {
+  width: 100%;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.3rem;
+}
+#weather-forecast {
+  background-color: saddlebrown;
+  width: 100%;
+  height: 94.7%;
 }

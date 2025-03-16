@@ -1,9 +1,9 @@
-import { placeholderURL } from "./urlList";
+import { placeholderURL as URL } from "./urlList";
 
 let finalResult: any = null;
 
 export default async function fetchingURL(): Promise<Response> {
-  const response = await fetch(placeholderURL);
+  const response = await fetch(URL);
   if (!response.ok) {
     throw new Error("HTTP error, status = " + response.status);
   }

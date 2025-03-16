@@ -1,4 +1,4 @@
-import "./heading.css";
+import "./design-style/heading.css";
 
 const header = document.getElementById("header")!;
 export default function headerDesign() {
