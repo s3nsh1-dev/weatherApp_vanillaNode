@@ -24,7 +24,7 @@ html {
   border-radius: 10px;
   width: 400px;
   height: 400px;
-  margin: 10px;
+  /* margin: 10px; */
 }
 .front-card-two {
   display: flex;
@@ -35,13 +35,27 @@ html {
   border-radius: 10px;
   width: 400px;
   height: 400px;
-  margin: 10px;
+  /* margin: 10px; */
 }
 
-#main {
+#user-choice {
   display: flex;
   flex-wrap: wrap;
+  gap: 50px;
   justify-content: center;
   align-items: center;
   margin-top: 20vh;
+}
+#this-or-this {
+  position: relative;
+  height: 100px;
+  width: 100px;
+  color: white;
+  font-weight: bold;
+  font-size: 2.3rem;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 5px solid green;
 }
