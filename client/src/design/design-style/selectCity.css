@@ -1,6 +1,7 @@
 .secondary-heading {
-  font-size: 2.5rem;
+  font-size: 2.2rem;
   font-weight: bold;
+  text-align: center;
   color: rgb(152, 240, 255);
   -webkit-text-stroke: 0.5px blue;
 }
@@ -23,11 +24,14 @@
   color: rgb(109, 148, 255);
 }
 .weather-icon {
-  width: 150px;
-  height: 15 0px;
+  width: 190px;
+  height: 190px;
 }
 .city-container {
   display: flex;
   flex-direction: column;
   gap: 20px;
+}
+.top-gap {
+  margin-top: 30px;
 }

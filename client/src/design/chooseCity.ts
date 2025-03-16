@@ -1,5 +1,5 @@
 import { OpenStreetMapAPI } from "../fetching/urlList";
-import "./design-style/chooseCity.css";
+import "./design-style/selectCity.css";
 
 export default function chooseCity(): void {
   const cityElement = document.querySelector<HTMLDivElement>("#choose-city")!;
