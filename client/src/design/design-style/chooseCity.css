@@ -1,0 +1,33 @@
+.secondary-heading {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: rgb(152, 240, 255);
+  -webkit-text-stroke: 0.5px blue;
+}
+#city-label {
+  font-size: 1.2rem;
+  font-weight: bold;
+  border-radius: 10px;
+  border: 1px solid blue;
+  padding: 5px;
+}
+#city-label::placeholder {
+  color: rgb(165, 165, 165);
+  font-size: 1rem;
+}
+.search-button {
+  padding: 10px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border-radius: 10px;
+  color: rgb(109, 148, 255);
+}
+.weather-icon {
+  width: 150px;
+  height: 15 0px;
+}
+.city-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}

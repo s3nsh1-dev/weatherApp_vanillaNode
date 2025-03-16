@@ -1,10 +1,16 @@
 import { OpenStreetMapAPI } from "../fetching/urlList";
+import "./design-style/chooseCity.css";
 
 export default function chooseCity(): void {
   const cityElement = document.querySelector<HTMLDivElement>("#choose-city")!;
-  cityElement.innerHTML = `<label class="secondary-heading" for="city-label">Enter City Name</label>
-    <input type="text" id="city-label" />
-    <button id="get-weather" class="search-button">Get Weather</button>`;
+  cityElement.innerHTML = `
+  <img class='weather-icon' src="../public/images/weather-app.png" alt="weather-logo" />
+  <div class="city-container">
+    <label class="secondary-heading" for="city-label">Enter City Name</label>
+    <input type="text" id="city-label" placeholder="e.g., New York"/>
+    <button id="get-weather" class="search-button">Get Weather</button>
+  </div>
+  `;
 
   const cityInput = document.querySelector<HTMLInputElement>("#city-label")!;
   const getWeather = document.querySelector<HTMLButtonElement>("#get-weather")!;
