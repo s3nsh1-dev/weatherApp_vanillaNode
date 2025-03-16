@@ -9,6 +9,8 @@ const userChoice: HTMLElement = document.getElementById("user-choice")!;
 const choiceResult: HTMLElement = document.getElementById("choice-result")!;
 
 const main = (): void => {
+  console.log("reloaded hey");
+
   headerDesign();
   chooseCity();
   randomCity();

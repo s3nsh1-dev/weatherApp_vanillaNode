@@ -1,3 +1,5 @@
+import { changeButtonValues } from "../main";
+
 export default function displayForecast() {
   const displayElem = document.querySelector<HTMLDivElement>("#choice-result")!;
   displayElem.innerHTML = `
@@ -7,7 +9,7 @@ export default function displayForecast() {
         </nav>
         <article id="weather-forecast">
         <div>
-            <button id="reset> <== back</button>
+            <button id="reset">---back---</button>
             <h1 id="panel-heading">Weather</h1>
         </div>
           <div id="card-container">
@@ -15,4 +17,12 @@ export default function displayForecast() {
           </div>
         </article>`;
   console.log("displayForecast");
+  handleResetClick();
 }
+
+const handleResetClick = () => {
+  const btnElement = document.querySelector<HTMLButtonElement>("#reset")!;
+  btnElement.addEventListener("click", () => {
+    changeButtonValues();
+  });
+};
