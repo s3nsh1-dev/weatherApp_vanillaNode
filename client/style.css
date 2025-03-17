@@ -69,27 +69,3 @@ html {
   border-radius: 10px;
   box-shadow: 2px 2px 15px black;
 }
-
-#switch-panel {
-  display: flex;
-  justify-content: center;
-}
-#switch-to-weather {
-  background-color: seagreen;
-}
-#switch-to-forecast {
-  background-color: snow;
-}
-.divButtons {
-  width: 100%;
-  height: 40px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 1.3rem;
-}
-#weather-forecast {
-  background-color: saddlebrown;
-  width: 100%;
-  height: 94.7%;
-}
