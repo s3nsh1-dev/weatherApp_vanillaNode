@@ -1,0 +1,47 @@
+.reset-container {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  margin: 10px;
+}
+#reset {
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+#panel-heading {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+  color: rgb(152, 240, 255);
+  -webkit-text-stroke: 0.5px blue;
+}
+#switch-panel {
+  display: flex;
+  justify-content: center;
+}
+
+/* #switch-to-weather {
+}
+#switch-to-forecast {
+} */
+
+#weather-forecast {
+  width: 100%;
+  /* height: 94.7%; */
+}
+.divButtons {
+  cursor: pointer;
+  color: snow;
+  width: 100%;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.3rem;
+}
+.selected-divButton {
+  background-color: rgb(43, 117, 139);
+  border-radius: 10px 10px 0px 0px;
+}

@@ -5,7 +5,7 @@
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 html {
-  background-image: url("./public/images/weatherApp_background.jpg");
+  background-image: url("./images/weatherApp_background.jpg");
 }
 #header {
   display: flex;
@@ -68,28 +68,4 @@ html {
   margin: 3% auto;
   border-radius: 10px;
   box-shadow: 2px 2px 15px black;
-}
-
-#switch-panel {
-  display: flex;
-  justify-content: center;
-}
-#switch-to-weather {
-  background-color: seagreen;
-}
-#switch-to-forecast {
-  background-color: snow;
-}
-.divButtons {
-  width: 100%;
-  height: 40px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 1.3rem;
-}
-#weather-forecast {
-  background-color: saddlebrown;
-  width: 100%;
-  height: 94.7%;
 }
