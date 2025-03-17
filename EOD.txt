@@ -1,5 +1,4 @@
-reset button & h1 needs to be designed
-work no implementing the switching of tabs via divButtons (color the background to test the switching)
+work no implementing the switching of tabs via divButtons (color the background to test the switching) 1/2
 Correct weather and forecast data needs to be fetched
 data should send through user interface to result panel (default idea: via functions)
 cards, divButtons nd more need to be designed
