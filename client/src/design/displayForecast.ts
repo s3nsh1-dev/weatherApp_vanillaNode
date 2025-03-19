@@ -2,27 +2,13 @@ import { changeButtonValues } from "../main";
 import "./design-style/displayForecast.css";
 import cardContainer from "./format-data/cardContainer";
 
-let cardContainerDisplayCount = 0;
+// let cardContainerDisplayCount = 0;
 export default function displayForecast() {
-  cardContainerDisplayCount++;
-  const switchPanel = document.querySelector<HTMLDivElement>("#switch-panel")!;
-  const resentContainer =
-    document.querySelector<HTMLDivElement>(".reset-container")!;
-  switchPanel.innerHTML = `
-        <div class="divButtons" id="switch-to-weather">Weather</div>
-        <div class="divButtons selected-divButton" id="switch-to-forecast">Forecast</div>`;
-  resentContainer.innerHTML = `
-        <button id="reset">Go Back</button>
-        <h1 id="panel-heading">Weather</h1>`;
+  // cardContainerDisplayCount++;
+  letTheDomCreate();
   handleResetClick();
   handlePanelSwitching();
-  console.log(cardContainerDisplayCount);
-  if (cardContainerDisplayCount % 2 == 0) {
-    document.getElementById("card-container")!.innerHTML = ``;
-    cardContainer();
-  } else {
-    document.getElementById("card-container")!.innerHTML = ``;
-  }
+  cardContainer(); // Run function only after the DOM is ready
 }
 
 const handleResetClick = () => {
@@ -51,4 +37,24 @@ const handlePanelSwitching = () => {
     weather.classList.add("selected-divButton");
     panelHeading.innerText = "Forecast";
   });
+};
+
+const letTheDomCreate = () => {
+  const resultContainer =
+    document.querySelector<HTMLDivElement>("#choice-result")!;
+
+  resultContainer.innerHTML = `
+        <nav id="switch-panel">
+          <div class="divButtons" id="switch-to-weather">Weather</div>
+          <div class="divButtons selected-divButton" id="switch-to-forecast">
+            Forecast
+          </div>
+        </nav>
+        <article id="weather-forecast">
+          <div class="reset-container">
+            <button id="reset">Go Back</button>
+            <h1 id="panel-heading">Weather</h1>
+          </div>
+          <div id="card-container"></div>
+        </article>`;
 };
