@@ -17,7 +17,6 @@ export default function displayForecast() {
             <div class="api-cards"></div>
           </div>
         </article>`;
-  console.log("displayForecast");
   handleResetClick();
   handlePanelSwitching();
 }
@@ -34,7 +33,10 @@ const handlePanelSwitching = () => {
   const forecast = document.querySelector<HTMLDivElement>(
     "#switch-to-forecast"
   )!;
-  const panelHeading = document.getElementById("panel-heading")!;
+  const panelHeading = document.getElementById(
+    "panel-heading"
+  )! as HTMLDivElement;
+
   weather.addEventListener("click", () => {
     weather.classList.remove("selected-divButton");
     forecast.classList.add("selected-divButton");

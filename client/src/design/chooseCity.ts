@@ -1,4 +1,3 @@
-import { OpenStreetMapAPI } from "../fetching/urlList";
 import { changeButtonValues } from "../main";
 import "./design-style/selectCity.css";
 
@@ -18,12 +17,6 @@ export default function chooseCity(): void {
 
   if (getWeather && cityInput) {
     getWeather.addEventListener("click", () => {
-      console.log("sending.....", cityInput.value);
-      const cityName = OpenStreetMapAPI(
-        (cityInput.value as string) || "new york"
-      );
-      console.log("City Name:", JSON.stringify(cityName));
-      console.log("we clicked");
       changeButtonValues();
     });
   }
