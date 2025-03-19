@@ -1,24 +1,21 @@
 import { changeButtonValues } from "../main";
 import "./design-style/displayForecast.css";
+import cardContainer from "./format-data/cardContainer";
 
 export default function displayForecast() {
   const displayElem = document.querySelector<HTMLDivElement>("#choice-result")!;
-  displayElem.innerHTML = `
-        <nav id="switch-panel">
-          <div class="divButtons" id="switch-to-weather">Weather</div>
-          <div class="divButtons selected-divButton" id="switch-to-forecast">Forecast</div>
-        </nav>
-        <article id="weather-forecast">
-        <div class="reset-container">
-            <button id="reset">Go Back</button>
-            <h1 id="panel-heading">Weather</h1>
-        </div>
-          <div id="card-container">
-            <div class="api-cards"></div>
-          </div>
-        </article>`;
+  const switchPanel = document.querySelector<HTMLDivElement>("#switch-panel")!;
+  const resentContainer =
+    document.querySelector<HTMLDivElement>(".reset-container")!;
+  switchPanel.innerHTML = `
+        <div class="divButtons" id="switch-to-weather">Weather</div>
+        <div class="divButtons selected-divButton" id="switch-to-forecast">Forecast</div>`;
+  resentContainer.innerHTML = `
+        <button id="reset">Go Back</button>
+        <h1 id="panel-heading">Weather</h1>`;
   handleResetClick();
   handlePanelSwitching();
+  cardContainer();
 }
 
 const handleResetClick = () => {

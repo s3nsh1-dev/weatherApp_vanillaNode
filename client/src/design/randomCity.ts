@@ -7,6 +7,7 @@ import "./design-style/selectCity.css";
 interface coordinatesType {
   lat: number;
   lon: number;
+  name: string;
 }
 
 export default function randomCity(): void {
@@ -33,10 +34,11 @@ export default function randomCity(): void {
 
 export const fetchForCoordinates = async (): Promise<coordinatesType> => {
   try {
-    const { lat, lon } = await getAPIdata();
+    const { lat, lon, display_name } = await getAPIdata();
     const coordinates: coordinatesType = {
       lat: +lat,
       lon: +lon,
+      name: display_name,
     };
     return coordinates;
   } catch (error) {
