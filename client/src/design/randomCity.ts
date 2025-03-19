@@ -1,7 +1,14 @@
 import { OpenStreetMapAPI } from "../fetching/urlList";
 import { cityNames } from "../constants/constVariables";
 import { changeButtonValues } from "../main";
+import fetchingURL from "../fetching/primaryFetch";
 import "./design-style/selectCity.css";
+
+interface coordinatesType {
+  lat: number;
+  lon: number;
+  name: string;
+}
 
 export default function randomCity(): void {
   const cityElement = document.querySelector<HTMLDivElement>("#random-city")!;
@@ -18,12 +25,33 @@ export default function randomCity(): void {
   )!;
 
   if (showWeather) {
-    showWeather.addEventListener("click", () => {
-      const randomCity =
-        cityNames[Math.floor(Math.random() * cityNames.length)];
-      const cityName = OpenStreetMapAPI(randomCity);
-      console.log("City Name:", JSON.stringify(cityName));
+    showWeather.addEventListener("click", async () => {
+      // maintain harmony between GoBack and getWeather Buttons
       changeButtonValues();
     });
   }
 }
+
+export const fetchForCoordinates = async (): Promise<coordinatesType> => {
+  try {
+    const { lat, lon, display_name } = await getAPIdata();
+    const coordinates: coordinatesType = {
+      lat: +lat,
+      lon: +lon,
+      name: display_name,
+    };
+    return coordinates;
+  } catch (error) {
+    console.log("Error in coordinate Fetching:", error);
+    throw error;
+  }
+};
+
+const getAPIdata = async () => {
+  const randomCity = cityNames[Math.floor(Math.random() * cityNames.length)];
+  const cityName = OpenStreetMapAPI(randomCity);
+  const response: Response | undefined = await fetchingURL(cityName);
+  const result = await response.json();
+  if (result.length === 0) throw new Error("Co-ordinates not found");
+  return result[0];
+};
