@@ -2,8 +2,9 @@ import { changeButtonValues } from "../main";
 import "./design-style/displayForecast.css";
 import cardContainer from "./format-data/cardContainer";
 
+let cardContainerDisplayCount = 0;
 export default function displayForecast() {
-  const displayElem = document.querySelector<HTMLDivElement>("#choice-result")!;
+  cardContainerDisplayCount++;
   const switchPanel = document.querySelector<HTMLDivElement>("#switch-panel")!;
   const resentContainer =
     document.querySelector<HTMLDivElement>(".reset-container")!;
@@ -15,7 +16,13 @@ export default function displayForecast() {
         <h1 id="panel-heading">Weather</h1>`;
   handleResetClick();
   handlePanelSwitching();
-  cardContainer();
+  console.log(cardContainerDisplayCount);
+  if (cardContainerDisplayCount % 2 == 0) {
+    document.getElementById("card-container")!.innerHTML = ``;
+    cardContainer();
+  } else {
+    document.getElementById("card-container")!.innerHTML = ``;
+  }
 }
 
 const handleResetClick = () => {
