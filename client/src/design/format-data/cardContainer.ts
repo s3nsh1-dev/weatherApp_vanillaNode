@@ -16,10 +16,15 @@ export default async function cardContainer() {
   const response = await fetchingURL(fresh_URL);
   const data = await response.json();
   console.log("what we get:", data);
-
+  console.log("NEXT:", data.current.temperature_2m);
   let cardsHTML = "";
   for (let i = 0; i < 6; i++) {
-    cardsHTML += `<div class="w-cards">I am here</div>`;
+    cardsHTML += `<div class="w-cards">
+    <img src="${image}" alt="weather_pic"/>
+    <div class="displayBox">
+      <div class="WhatTime">${date}: ${time}</div>
+      <div class="whatTemperature">${temperature}</div>
+    </div>`;
+    containerElement.innerHTML = cardsHTML;
   }
-  containerElement.innerHTML = cardsHTML;
 }
