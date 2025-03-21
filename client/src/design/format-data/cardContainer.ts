@@ -45,13 +45,14 @@ export default async function cardContainer() {
 
   let cardsHTML = "";
   for (let i = 0; i < 6; i++) {
-    cardsHTML += `<div class="w-cards">
-    <img class="card-image" src="${finalTimeObject[i].imageSrc}" alt="weather_pic" height="100" width="100"/>
-    <div class="display-box">
-      <div class="what-period">${finalTimeObject[i].period}: ${finalTimeObject[i].time}</div>
-      <div class="what-time">${finalTimeObject[i].date}</div>
-      <div class="what-temperature">${finalTimeObject[0].temperature}</div>
-    </div>`;
+    // cardsHTML += `<div class="w-cards">
+    // <img class="card-image" src="${finalTimeObject[i].imageSrc}" alt="weather_pic" height="100" width="100"/>
+    // <div class="display-box">
+    //   <div class="what-period">${finalTimeObject[i].period}: ${finalTimeObject[i].time}</div>
+    //   <div class="what-time">${finalTimeObject[i].date}</div>
+    //   <div class="what-temperature">${finalTimeObject[0].temperature}</div>
+    // </div>`;
+    cardsHTML += `<div>i am a dusco fis</div>`;
   }
   containerElement.innerHTML = cardsHTML;
 }
