@@ -1,6 +1,45 @@
 import { fetchForCoordinates } from "../randomCity";
 import { getWeatherAPI } from "../../fetching/urlList";
 import fetchingURL from "../../fetching/primaryFetch";
+import afternoon from "../../../public/images/afternoon.jpg";
+import midnight from "../../../public/images/midnight.jpg";
+import night from "../../../public/images/night.jpg";
+import morning from "../../../public/images/morning.jpg";
+import evening from "../../../public/images/evening.png";
+import dawn from "../../../public/images/dawn.jpg";
+
+const timeArray = [
+  {
+    time: "",
+    period: "Midnight",
+    imageSrc: midnight,
+    date: "",
+    temperature: "",
+  },
+  { time: "", period: "Dawn", imageSrc: "image2", date: "", temperature: "" },
+  {
+    time: "",
+    period: "Morning",
+    imageSrc: morning,
+    date: "",
+    temperature: "",
+  },
+  {
+    time: "",
+    period: "Afternoon",
+    imageSrc: afternoon,
+    date: "",
+    temperature: "",
+  },
+  {
+    time: "",
+    period: "Evening",
+    imageSrc: evening,
+    date: "",
+    temperature: "",
+  },
+  { time: "", period: "Night", imageSrc: night, date: "", temperature: "" },
+];
 
 export default async function cardContainer() {
   const containerElement = document.getElementById(
