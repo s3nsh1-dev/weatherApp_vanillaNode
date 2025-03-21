@@ -36,8 +36,8 @@ export const fetchForCoordinates = async (): Promise<coordinatesType> => {
   try {
     const { lat, lon, display_name } = await getAPIdata();
     const coordinates: coordinatesType = {
-      lat: +lat,
       lon: +lon,
+      lat: +lat,
       name: display_name,
     };
     return coordinates;
