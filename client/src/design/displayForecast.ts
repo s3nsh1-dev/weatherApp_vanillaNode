@@ -55,6 +55,7 @@ const letTheDomCreate = () => {
             <button id="reset">Go Back</button>
             <h1 id="panel-heading">Weather</h1>
           </div>
+          <div id="city-name"></div>
           <div id="card-container"></div>
         </article>`;
 };

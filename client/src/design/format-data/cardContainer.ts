@@ -9,6 +9,8 @@ import evening from "../../../public/images/evening.png";
 import dawn from "../../../public/images/dawn.jpg";
 import "../design-style/cardContainer.css";
 
+let unit = `°C`;
+
 interface timeType {
   time: string;
   period: string;
@@ -27,8 +29,9 @@ export default async function cardContainer() {
   const containerElement = document.getElementById(
     "card-container"
   ) as HTMLDivElement;
-  if (!containerElement) {
-    console.error("card-container element not found");
+  const displayCityName = document.getElementById("city-name") as HTMLElement;
+  if (!containerElement && !displayCityName) {
+    console.error("reset-container not found");
     return;
   }
 
@@ -43,16 +46,19 @@ export default async function cardContainer() {
   const finalTimeObject: timeType[] = prepareTimeObject(data_API);
   console.log("Time Array : ", finalTimeObject);
 
+  displayCityName.innerHTML = `<h1>${coObject.name}</h1>`;
+
   let cardsHTML = "";
   for (let i = 0; i < 6; i++) {
-    // cardsHTML += `<div class="w-cards">
-    // <img class="card-image" src="${finalTimeObject[i].imageSrc}" alt="weather_pic" height="100" width="100"/>
-    // <div class="display-box">
-    //   <div class="what-period">${finalTimeObject[i].period}: ${finalTimeObject[i].time}</div>
-    //   <div class="what-time">${finalTimeObject[i].date}</div>
-    //   <div class="what-temperature">${finalTimeObject[0].temperature}</div>
-    // </div>`;
-    cardsHTML += `<div>i am a dusco fis</div>`;
+    cardsHTML += `
+    <div class="w-cards">
+      <img class="card-image" src="${finalTimeObject[i].imageSrc}" alt="weather_pic"/>
+      <div class="display-box">
+        <div><span class="what-period">${finalTimeObject[i].period}</span> <span class="sub-time">(${finalTimeObject[i].time})</span></div>
+        <div class="what-date"><span class="span-heading">Date:</span> <span class="answer">${finalTimeObject[i].date}</span></div>
+        <div class="what-temperature"><span class="span-heading">Temperature:</span> <span class="answer">${finalTimeObject[0].temperature}${unit}</span></div>
+      </div>
+    </div>`;
   }
   containerElement.innerHTML = cardsHTML;
 }
@@ -61,7 +67,7 @@ function prepareTimeObject(data_API: any) {
   const currentDate = data_API.current.time.slice(0, 10);
   const timeArray: timeType[] = [
     {
-      time: "1 :00 - 4:00",
+      time: "1:00 - 4:00",
       period: "Midnight",
       imageSrc: midnight,
       date: currentDate,
