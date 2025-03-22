@@ -1,9 +1,12 @@
 import fetchingURL from "../../fetching/primaryFetch";
 import image from "../../../public/images/weather-app.png";
 
-let unit = `°C`;
+let unit: string = `celsius`;
+const celsiusSymbol = `°C`;
+const fahrenheitSymbol = `°F`;
 
 export default async function showForecast(fresh_URL: string) {
+  correctUnit(fresh_URL);
   const containerElement = document.getElementById(
     "card-container"
   ) as HTMLDivElement;
@@ -24,8 +27,13 @@ export default async function showForecast(fresh_URL: string) {
     <div class="w-cards" id=${i.id}>
       <img class="card-image" src="${i.imageSrc}" alt="weather_pic"/>
       <div class="display-box">
-        <div class="what-date"><span class="span-heading">Date:</span> <span class="answer">${i.date}</span></div>
-        <div class="what-temperature"><span class="span-heading">Temperature:</span> <span class="answer">${i.temperature}${unit}</span></div>
+        <div class="what-date"><span class="span-heading">Date:</span> <span class="answer">${
+          i.date
+        }</span></div>
+        <div class="what-temperature"><span class="span-heading">Temperature:</span> <span class="answer">${convertTemperature(
+          i.temperature,
+          unit
+        )}${unit === "celsius" ? celsiusSymbol : fahrenheitSymbol}</span></div>
       </div>
     </div>`;
     // cardsHTML += `<div>i am a disco dancer</div>`;
@@ -49,6 +57,37 @@ function prepareForecastObject(sample: sampleType): forecastType[] {
   }
   return forecastObject;
 }
+
+function correctUnit(fresh_URL: string) {
+  const radioButtons = document.querySelectorAll('input[name="tempUnit"]');
+
+  radioButtons.forEach((radio) => {
+    radio.addEventListener("change", () => {
+      const activeRadio = document.querySelector(
+        'input[name="tempUnit"]:checked'
+      )!;
+      console.log("Active unit:", activeRadio.id);
+      unit = activeRadio.id;
+      // Re-render the weather cards immediately
+      showForecast(fresh_URL);
+    });
+  });
+}
+
+function convertTemperature(value: number, conversionType: string) {
+  if (conversionType === "celsius") {
+    // Convert Celsius to Fahrenheit
+    return ((value * 9) / 5 + 32).toFixed(1);
+  } else if (conversionType === "fahrenheit") {
+    // Convert Fahrenheit to Celsius
+    return (((value - 32) * 5) / 9).toFixed(1);
+  } else {
+    throw new Error(
+      "Invalid conversion type. Use 'CtoF' for Celsius to Fahrenheit or 'FtoC' for Fahrenheit to Celsius."
+    );
+  }
+}
+
 interface forecastType {
   id: number;
   imageSrc: string;

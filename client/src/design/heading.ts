@@ -7,11 +7,11 @@ export default function headerDesign() {
         <button id="options">Options</button>
         <article id="weather-unit">
           <div>
-            <input type='radio' id="celsius" checked/>
+            <input name="tempUnit" type='radio' id="celsius" checked />
             <label for="celsius">Celsius</label>
           </div>
           <div>
-            <input type='radio' id="fahrenheit"/>
+            <input name="tempUnit" type='radio' id="fahrenheit"/>
             <label for="fahrenheit">Fahrenheit</label>
           </div>
         </article>
