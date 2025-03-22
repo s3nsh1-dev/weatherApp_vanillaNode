@@ -2,40 +2,16 @@ import { changeButtonValues } from "../main";
 import "./design-style/displayForecast.css";
 import cardContainer from "./format-data/cardContainer";
 
-// let cardContainerDisplayCount = 0;
 export default function displayForecast() {
-  // cardContainerDisplayCount++;
   letTheDomCreate();
   handleResetClick();
-  handlePanelSwitching();
-  cardContainer(); // Run function only after the DOM is ready
+  cardContainer();
 }
 
 const handleResetClick = () => {
   const btnElement = document.querySelector<HTMLButtonElement>("#reset")!;
   btnElement.addEventListener("click", () => {
     changeButtonValues();
-  });
-};
-
-const handlePanelSwitching = () => {
-  const weather = document.querySelector<HTMLDivElement>("#switch-to-weather")!;
-  const forecast = document.querySelector<HTMLDivElement>(
-    "#switch-to-forecast"
-  )!;
-  const panelHeading = document.getElementById(
-    "panel-heading"
-  )! as HTMLDivElement;
-
-  weather.addEventListener("click", () => {
-    weather.classList.remove("selected-divButton");
-    forecast.classList.add("selected-divButton");
-    panelHeading.innerText = "Weather";
-  });
-  forecast.addEventListener("click", () => {
-    forecast.classList.remove("selected-divButton");
-    weather.classList.add("selected-divButton");
-    panelHeading.innerText = "Forecast";
   });
 };
 
