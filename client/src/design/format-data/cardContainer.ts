@@ -35,6 +35,8 @@ export default async function cardContainer() {
     return;
   }
 
+  // const citySearchType = meansOfInput()
+
   const coObject: coordinatesType = await fetchForCoordinates();
   const fresh_URL: string = getWeatherAPI(
     coObject.lat,

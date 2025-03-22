@@ -1,6 +1,8 @@
 import { changeButtonValues } from "../main";
 import "./design-style/selectCity.css";
 
+let currentCityName: string = "";
+
 export default function chooseCity(): void {
   const cityElement = document.querySelector<HTMLDivElement>("#choose-city")!;
   cityElement.innerHTML = `
@@ -12,12 +14,17 @@ export default function chooseCity(): void {
   </div>
   `;
 
-  const cityInput = document.querySelector<HTMLInputElement>("#city-label")!;
   const getWeather = document.querySelector<HTMLButtonElement>("#get-weather")!;
+  const cityInput = document.querySelector<HTMLInputElement>("#city-label")!;
 
   if (getWeather && cityInput) {
     getWeather.addEventListener("click", () => {
+      currentCityName = cityInput.value;
       changeButtonValues();
     });
   }
+}
+
+export function sendCityName(): string {
+  return currentCityName;
 }

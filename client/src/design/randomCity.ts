@@ -3,6 +3,7 @@ import { cityNames } from "../constants/constVariables";
 import { changeButtonValues } from "../main";
 import fetchingURL from "../fetching/primaryFetch";
 import "./design-style/selectCity.css";
+import { sendCityName } from "./chooseCity";
 
 interface coordinatesType {
   lat: number;
@@ -48,8 +49,12 @@ export const fetchForCoordinates = async (): Promise<coordinatesType> => {
 };
 
 const getAPIdata = async () => {
-  const randomCity = cityNames[Math.floor(Math.random() * cityNames.length)];
-  const cityName = OpenStreetMapAPI(randomCity);
+  let userEnteredCityName = sendCityName();
+  if (userEnteredCityName.length < 1) {
+    userEnteredCityName =
+      cityNames[Math.floor(Math.random() * cityNames.length)];
+  }
+  const cityName = OpenStreetMapAPI(userEnteredCityName);
   const response: Response | undefined = await fetchingURL(cityName);
   const result = await response.json();
   if (result.length === 0) throw new Error("Co-ordinates not found");
