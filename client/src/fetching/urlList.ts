@@ -1,5 +1,3 @@
-import { cityNames } from "../constants/constVariables";
-import { sendCityName } from "../design/chooseCity";
 import fetchingURL from "./primaryFetch";
 
 export const currentWeatherTimeline: string = `https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&hourly=temperature_2m&current=temperature_2m&forecast_days=1`;
@@ -31,9 +29,11 @@ export const getWeatherAPI = (
 
   throw new Error("Check API Parameters");
 };
-export const fetchForCoordinates = async (): Promise<coordinatesType> => {
+export const fetchForCoordinates = async (
+  userEnteredCityName: string
+): Promise<coordinatesType> => {
   try {
-    const { lat, lon, display_name } = await getAPIdata();
+    const { lat, lon, display_name } = await getAPIdata(userEnteredCityName);
     const coordinates: coordinatesType = {
       lon: +lon,
       lat: +lat,
@@ -46,12 +46,7 @@ export const fetchForCoordinates = async (): Promise<coordinatesType> => {
   }
 };
 
-export const getAPIdata = async () => {
-  let userEnteredCityName = sendCityName();
-  if (userEnteredCityName.length < 1) {
-    userEnteredCityName =
-      cityNames[Math.floor(Math.random() * cityNames.length)];
-  }
+export const getAPIdata = async (userEnteredCityName: string) => {
   const cityName = OpenStreetMapAPI(userEnteredCityName);
   const response: Response | undefined = await fetchingURL(cityName);
   const result = await response.json();

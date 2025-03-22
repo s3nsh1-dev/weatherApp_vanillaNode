@@ -4,6 +4,9 @@ import "../design-style/cardContainer.css";
 import { fetchForCoordinates } from "../../fetching/urlList";
 import { getWeatherAPI } from "../../fetching/urlList";
 import "../design-style/cardContainer.css";
+import { sendCityName } from "../chooseCity";
+import { cityNames } from "../../constants/constVariables";
+
 interface monitorType {
   currentTab: string;
   previousTab: string;
@@ -20,12 +23,42 @@ let tabMonitor: monitorType = {
   previousTab: "Weather",
 };
 
-export default async function cardContainer() {
-  handlePanelSwitching();
-  const coObject: coordinatesType = await fetchForCoordinates();
-  const displayCityName = document.getElementById("city-name") as HTMLElement;
-  displayCityName.innerHTML = `<h1>${coObject.name}</h1>`;
+let userEnteredCityName = sendCityName();
+if (userEnteredCityName.length < 1) {
+  userEnteredCityName = cityNames[Math.floor(Math.random() * cityNames.length)];
+}
+const coObject: coordinatesType = await fetchForCoordinates(
+  userEnteredCityName
+);
 
+const handlePanelSwitching = () => {
+  const weather = document.querySelector<HTMLDivElement>("#switch-to-weather")!;
+  const forecast = document.querySelector<HTMLDivElement>(
+    "#switch-to-forecast"
+  )!;
+  const panelHeading = document.getElementById(
+    "panel-heading"
+  )! as HTMLDivElement;
+
+  weather.addEventListener("click", () => {
+    weather.classList.remove("selected-divButton");
+    forecast.classList.add("selected-divButton");
+    panelHeading.innerText = "Weather";
+    tabMonitor.previousTab = tabMonitor.currentTab;
+    tabMonitor.currentTab = "Weather";
+    renderCardChildren();
+  });
+  forecast.addEventListener("click", () => {
+    forecast.classList.remove("selected-divButton");
+    weather.classList.add("selected-divButton");
+    panelHeading.innerText = "Forecast";
+    tabMonitor.previousTab = tabMonitor.currentTab;
+    tabMonitor.currentTab = "Forecast";
+    renderCardChildren();
+  });
+};
+
+function renderCardChildren() {
   if (tabMonitor.currentTab === "Weather") {
     const fresh_URL: string = getWeatherAPI(
       coObject.lat,
@@ -43,32 +76,10 @@ export default async function cardContainer() {
   }
 }
 
-const handlePanelSwitching = () => {
-  const weather = document.querySelector<HTMLDivElement>("#switch-to-weather")!;
-  const forecast = document.querySelector<HTMLDivElement>(
-    "#switch-to-forecast"
-  )!;
-  const panelHeading = document.getElementById(
-    "panel-heading"
-  )! as HTMLDivElement;
+export default async function cardContainer() {
+  handlePanelSwitching();
 
-  weather.addEventListener("click", () => {
-    weather.classList.remove("selected-divButton");
-    forecast.classList.add("selected-divButton");
-    panelHeading.innerText = "Weather";
-    tabMonitor.previousTab = tabMonitor.currentTab;
-    tabMonitor.currentTab = "Weather";
-    cardContainer();
-  });
-  forecast.addEventListener("click", () => {
-    forecast.classList.remove("selected-divButton");
-    weather.classList.add("selected-divButton");
-    panelHeading.innerText = "Forecast";
-    tabMonitor.previousTab = tabMonitor.currentTab;
-    tabMonitor.currentTab = "Forecast";
-    cardContainer();
-  });
-};
-// function whatIsTheCurrentTab() {
-//   return "";
-// }
+  const displayCityName = document.getElementById("city-name") as HTMLElement;
+  displayCityName.innerHTML = `<h1>${coObject.name}</h1>`;
+  renderCardChildren();
+}

@@ -85,22 +85,23 @@ export default async function showCurrentWeather(fresh_URL: string) {
   }
   containerElement.innerHTML = "";
 
-  const response: Response = await fetchingURL(fresh_URL);
-  const data_API: any = await response.json();
-  const finalTimeObject: timeType[] = prepareTimeObject(data_API);
-  console.log("Time Array : ", finalTimeObject);
+  //   const response: Response = await fetchingURL(fresh_URL);
+  //   const data_API: any = await response.json();
+  //   const finalTimeObject: timeType[] = prepareTimeObject(data_API);
+  //   console.log("Time Array : ", finalTimeObject);
 
   let cardsHTML = "";
   for (let i = 0; i < 6; i++) {
-    cardsHTML += `
-    <div class="w-cards">
-      <img class="card-image" src="${finalTimeObject[i].imageSrc}" alt="weather_pic"/>
-      <div class="display-box">
-        <div><span class="what-period">${finalTimeObject[i].period}</span> <span class="sub-time">(${finalTimeObject[i].time})</span></div>
-        <div class="what-date"><span class="span-heading">Date:</span> <span class="answer">${finalTimeObject[i].date}</span></div>
-        <div class="what-temperature"><span class="span-heading">Temperature:</span> <span class="answer">${finalTimeObject[0].temperature}${unit}</span></div>
-      </div>
-    </div>`;
+    // cardsHTML += `
+    // <div class="w-cards">
+    //   <img class="card-image" src="${finalTimeObject[i].imageSrc}" alt="weather_pic"/>
+    //   <div class="display-box">
+    //     <div><span class="what-period">${finalTimeObject[i].period}</span> <span class="sub-time">(${finalTimeObject[i].time})</span></div>
+    //     <div class="what-date"><span class="span-heading">Date:</span> <span class="answer">${finalTimeObject[i].date}</span></div>
+    //     <div class="what-temperature"><span class="span-heading">Temperature:</span> <span class="answer">${finalTimeObject[0].temperature}${unit}</span></div>
+    //   </div>
+    // </div>`;
+    cardsHTML += `<div>i am showing current weather</div>`;
   }
   containerElement.innerHTML = cardsHTML;
 }
