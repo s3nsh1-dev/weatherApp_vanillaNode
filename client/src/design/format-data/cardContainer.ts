@@ -20,7 +20,7 @@ interface coordinatesType {
 
 let tabMonitor: monitorType = {
   currentTab: "Weather",
-  previousTab: "Weather",
+  previousTab: "Forecast",
 };
 
 let userEnteredCityName = sendCityName();
@@ -59,6 +59,9 @@ const handlePanelSwitching = () => {
 };
 
 function renderCardChildren() {
+  if (tabMonitor.currentTab === tabMonitor.previousTab) {
+    return;
+  }
   if (tabMonitor.currentTab === "Weather") {
     const fresh_URL: string = getWeatherAPI(
       coObject.lat,
@@ -81,5 +84,6 @@ export default async function cardContainer() {
 
   const displayCityName = document.getElementById("city-name") as HTMLElement;
   displayCityName.innerHTML = `<h1>${coObject.name}</h1>`;
+
   renderCardChildren();
 }
