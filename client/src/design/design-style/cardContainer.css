@@ -1,17 +1,70 @@
 #card-container {
+  position: relative;
+  overflow-x: auto;
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
+  justify-content: flex-start;
+  flex-wrap: nowrap;
+  scroll-behavior: smooth;
+  gap: 30px;
+  padding: 30px;
 }
 .w-cards {
+  border: 1px solid black;
+  border-radius: 10px;
+  width: 300px;
+  flex-shrink: 0;
+  /* margin-top: 6%; */
+  backdrop-filter: blur(15px); /* Adjust blur intensity */
 }
 .card-image {
+  border-radius: 10px 10px 0px 0px;
+  height: 250px;
+  width: 100%;
 }
 .display-box {
+  display: flex;
+  flex-direction: column;
+  padding: 20px 10px;
+  gap: 5px;
 }
 .what-period {
+  font-family: "Courier New", Courier, monospace;
+  color: rgb(4, 0, 255);
+  font-weight: bold;
+  font-size: 1.7rem;
 }
-.what-time {
+.what-date {
+  font-family: "Courier New", Courier, monospace;
+  /* margin: 10px 0px; */
 }
+
 .what-temperature {
+  font-family: "Courier New", Courier, monospace;
+}
+.span-heading {
+  font-family: "Courier New", Courier, monospace;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+.sub-time {
+  font-family: "Courier New", Courier, monospace;
+  color: rgb(255, 255, 255);
+  font-size: small;
+}
+.answer {
+  font-family: "Courier New", Courier, monospace;
+  color: rgb(4, 0, 255);
+}
+#city-name {
+  padding: 20px;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+  color: white;
+  background: linear-gradient(45deg, #2f00ff, #7bfafe);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
