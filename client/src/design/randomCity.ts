@@ -1,5 +1,6 @@
 import { changeButtonValues } from "../main";
 import "./design-style/selectCity.css";
+import { whichButtonPressed } from "./format-data/cardContainer";
 
 export default function randomCity(): void {
   const cityElement = document.querySelector<HTMLDivElement>("#random-city")!;
@@ -17,7 +18,7 @@ export default function randomCity(): void {
 
   if (showWeather) {
     showWeather.addEventListener("click", async () => {
-      // maintain harmony between GoBack and getWeather Buttons
+      whichButtonPressed("randomCity");
       changeButtonValues();
     });
   }

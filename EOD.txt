@@ -1,7 +1,2 @@
-app not registering user input
-when i switch to f -> c or vice-versa something weird happens,
-copilot suggested solution
-read about async and await on module on chatGPT
 try to add loading
 when dynamic content is loading, the pre-existing HTML skeleton shows up and it looks bad
-if the unit is already in fahrenheit make, when switching to other tab , automatically load the temperature in fahrenheit

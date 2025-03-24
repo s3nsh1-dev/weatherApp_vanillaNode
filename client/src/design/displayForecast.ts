@@ -2,10 +2,10 @@ import { changeButtonValues } from "../main";
 import "./design-style/displayForecast.css";
 import cardContainer from "./format-data/cardContainer";
 
-export default function displayForecast() {
+export default async function displayForecast() {
   letTheDomCreate();
   handleResetClick();
-  cardContainer();
+  await cardContainer();
 }
 
 const handleResetClick = () => {

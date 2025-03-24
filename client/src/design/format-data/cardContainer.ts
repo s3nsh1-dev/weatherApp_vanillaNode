@@ -4,7 +4,6 @@ import "../design-style/cardContainer.css";
 import { fetchForCoordinates } from "../../fetching/urlList";
 import { getWeatherAPI } from "../../fetching/urlList";
 import "../design-style/cardContainer.css";
-import { sendCityName } from "../chooseCity";
 import { cityNames } from "../../constants/constVariables";
 
 interface monitorType {
@@ -23,13 +22,12 @@ let tabMonitor: monitorType = {
   previousTab: "Forecast",
 };
 
-let userEnteredCityName = sendCityName();
-if (userEnteredCityName.length < 1) {
-  userEnteredCityName = cityNames[Math.floor(Math.random() * cityNames.length)];
+let globalObject: coordinatesType;
+let gCity: string = "new york";
+
+async function fetchingStructuredValueFrom_API() {
+  globalObject = await fetchForCoordinates(gCity);
 }
-const coObject: coordinatesType = await fetchForCoordinates(
-  userEnteredCityName
-);
 
 const handlePanelSwitching = () => {
   const weather = document.querySelector<HTMLDivElement>("#switch-to-weather")!;
@@ -64,15 +62,15 @@ function renderCardChildren() {
   }
   if (tabMonitor.currentTab === "Weather") {
     const fresh_URL: string = getWeatherAPI(
-      coObject.lat,
-      coObject.lon,
+      globalObject.lat,
+      globalObject.lon,
       "current"
     );
     showCurrentWeather(fresh_URL);
   } else {
     const fresh_URL: string = getWeatherAPI(
-      coObject.lat,
-      coObject.lon,
+      globalObject.lat,
+      globalObject.lon,
       "forecast"
     );
     showForecast(fresh_URL);
@@ -81,9 +79,24 @@ function renderCardChildren() {
 
 export default async function cardContainer() {
   handlePanelSwitching();
-
-  const displayCityName = document.getElementById("city-name") as HTMLElement;
-  displayCityName.innerHTML = `<h1>${coObject.name}</h1>`;
-
+  await fetchingStructuredValueFrom_API();
+  renderCityTitle();
   renderCardChildren();
+}
+
+function renderCityTitle() {
+  const display = document.getElementById("city-name") as HTMLElement;
+  display.innerHTML = `<h1>${globalObject.name}!</h1>`;
+}
+
+export function whichButtonPressed(ButtonId: string) {
+  if (ButtonId === "chooseCity") {
+    const cityInput = document.querySelector<HTMLInputElement>("#city-label")!;
+    gCity = cityInput.value;
+    if (gCity === "") {
+      gCity = "new york";
+    }
+  } else {
+    gCity = cityNames[Math.floor(Math.random() * cityNames.length)];
+  }
 }
