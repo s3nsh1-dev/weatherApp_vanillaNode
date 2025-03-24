@@ -8,6 +8,13 @@
   scroll-behavior: smooth;
   gap: 30px;
   padding: 30px;
+  scrollbar-width: thin;
+
+  scrollbar-color: #888 #f1f1f1;
+}
+
+#card-container::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
 .w-cards {
   border: 1px solid black;

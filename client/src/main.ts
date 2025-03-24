@@ -24,6 +24,12 @@ const main = (): void => {
 
 main();
 
+// Hide loader once main is done
+const loader = document.getElementById("loader") as HTMLDivElement;
+if (loader) {
+  loader.style.display = "none";
+}
+
 export const changeButtonValues = () => {
   if (currentDisplay === "choices") {
     currentDisplay = "weathers";

@@ -38,25 +38,26 @@ const handlePanelSwitching = () => {
     "panel-heading"
   )! as HTMLDivElement;
 
-  weather.addEventListener("click", () => {
+  weather.addEventListener("click", async () => {
     weather.classList.remove("selected-divButton");
     forecast.classList.add("selected-divButton");
     panelHeading.innerText = "Weather";
     tabMonitor.previousTab = tabMonitor.currentTab;
     tabMonitor.currentTab = "Weather";
-    renderCardChildren();
+    await renderCardChildren();
   });
-  forecast.addEventListener("click", () => {
+  forecast.addEventListener("click", async () => {
     forecast.classList.remove("selected-divButton");
     weather.classList.add("selected-divButton");
     panelHeading.innerText = "Forecast";
     tabMonitor.previousTab = tabMonitor.currentTab;
     tabMonitor.currentTab = "Forecast";
-    renderCardChildren();
+    hideLoadingScreenForLoader3();
+    await renderCardChildren();
   });
 };
 
-function renderCardChildren() {
+async function renderCardChildren() {
   if (tabMonitor.currentTab === tabMonitor.previousTab) {
     return;
   }
@@ -66,14 +67,18 @@ function renderCardChildren() {
       globalObject.lon,
       "current"
     );
-    showCurrentWeather(fresh_URL);
+    applyLoadingScreenForLoader3();
+    await showCurrentWeather(fresh_URL);
+    hideLoadingScreenForLoader3();
   } else {
     const fresh_URL: string = getWeatherAPI(
       globalObject.lat,
       globalObject.lon,
       "forecast"
     );
-    showForecast(fresh_URL);
+    applyLoadingScreenForLoader3();
+    await showForecast(fresh_URL);
+    hideLoadingScreenForLoader3();
   }
 }
 
@@ -81,7 +86,8 @@ export default async function cardContainer() {
   handlePanelSwitching();
   await fetchingStructuredValueFrom_API();
   renderCityTitle();
-  renderCardChildren();
+  await renderCardChildren();
+  hideLoadingScreenForLoader2();
 }
 
 function renderCityTitle() {
@@ -98,5 +104,24 @@ export function whichButtonPressed(ButtonId: string) {
     }
   } else {
     gCity = cityNames[Math.floor(Math.random() * cityNames.length)];
+  }
+}
+
+function hideLoadingScreenForLoader2() {
+  const loader2 = document.querySelector<HTMLDivElement>("#loader2");
+  if (loader2) {
+    loader2.style.display = "none";
+  }
+}
+function hideLoadingScreenForLoader3() {
+  const loader3 = document.querySelector<HTMLDivElement>("#loader3");
+  if (loader3) {
+    loader3.style.display = "none";
+  }
+}
+function applyLoadingScreenForLoader3() {
+  const loader3 = document.querySelector<HTMLDivElement>("#loader3");
+  if (loader3) {
+    loader3.style.display = "block";
   }
 }

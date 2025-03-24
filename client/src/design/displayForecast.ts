@@ -6,6 +6,7 @@ export default async function displayForecast() {
   letTheDomCreate();
   handleResetClick();
   await cardContainer();
+  // Hide loader once main is done
 }
 
 const handleResetClick = () => {
@@ -27,11 +28,13 @@ const letTheDomCreate = () => {
           </div>
         </nav>
         <article id="weather-forecast">
-          <div class="reset-container">
-            <button id="reset">Go Back</button>
-            <h1 id="panel-heading">Weather</h1>
-          </div>
-          <div id="city-name"></div>
-          <div id="card-container"></div>
+        <div id="loader2">Loading..</div>
+        <div class="reset-container">
+          <button id="reset">Go Back</button>
+          <h1 id="panel-heading">Weather</h1>
+        </div>
+        <div id="loader3">Loading...</div>
+        <div id="city-name"></div>
+        <div id="card-container"></div>
         </article>`;
 };
