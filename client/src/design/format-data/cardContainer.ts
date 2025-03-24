@@ -4,7 +4,6 @@ import "../design-style/cardContainer.css";
 import { fetchForCoordinates } from "../../fetching/urlList";
 import { getWeatherAPI } from "../../fetching/urlList";
 import "../design-style/cardContainer.css";
-import { sendCityName } from "../chooseCity";
 import { cityNames } from "../../constants/constVariables";
 
 interface monitorType {
@@ -23,13 +22,12 @@ let tabMonitor: monitorType = {
   previousTab: "Forecast",
 };
 
-let userEnteredCityName = sendCityName();
-if (userEnteredCityName.length < 1) {
-  userEnteredCityName = cityNames[Math.floor(Math.random() * cityNames.length)];
+let globalObject: coordinatesType;
+let gCity: string = "new york";
+
+async function fetchingStructuredValueFrom_API() {
+  globalObject = await fetchForCoordinates(gCity);
 }
-const coObject: coordinatesType = await fetchForCoordinates(
-  userEnteredCityName
-);
 
 const handlePanelSwitching = () => {
   const weather = document.querySelector<HTMLDivElement>("#switch-to-weather")!;
@@ -40,50 +38,90 @@ const handlePanelSwitching = () => {
     "panel-heading"
   )! as HTMLDivElement;
 
-  weather.addEventListener("click", () => {
+  weather.addEventListener("click", async () => {
     weather.classList.remove("selected-divButton");
     forecast.classList.add("selected-divButton");
     panelHeading.innerText = "Weather";
     tabMonitor.previousTab = tabMonitor.currentTab;
     tabMonitor.currentTab = "Weather";
-    renderCardChildren();
+    await renderCardChildren();
   });
-  forecast.addEventListener("click", () => {
+  forecast.addEventListener("click", async () => {
     forecast.classList.remove("selected-divButton");
     weather.classList.add("selected-divButton");
     panelHeading.innerText = "Forecast";
     tabMonitor.previousTab = tabMonitor.currentTab;
     tabMonitor.currentTab = "Forecast";
-    renderCardChildren();
+    hideLoadingScreenForLoader3();
+    await renderCardChildren();
   });
 };
 
-function renderCardChildren() {
+async function renderCardChildren() {
   if (tabMonitor.currentTab === tabMonitor.previousTab) {
     return;
   }
   if (tabMonitor.currentTab === "Weather") {
     const fresh_URL: string = getWeatherAPI(
-      coObject.lat,
-      coObject.lon,
+      globalObject.lat,
+      globalObject.lon,
       "current"
     );
-    showCurrentWeather(fresh_URL);
+    applyLoadingScreenForLoader3();
+    await showCurrentWeather(fresh_URL);
+    hideLoadingScreenForLoader3();
   } else {
     const fresh_URL: string = getWeatherAPI(
-      coObject.lat,
-      coObject.lon,
+      globalObject.lat,
+      globalObject.lon,
       "forecast"
     );
-    showForecast(fresh_URL);
+    applyLoadingScreenForLoader3();
+    await showForecast(fresh_URL);
+    hideLoadingScreenForLoader3();
   }
 }
 
 export default async function cardContainer() {
   handlePanelSwitching();
+  await fetchingStructuredValueFrom_API();
+  renderCityTitle();
+  await renderCardChildren();
+  hideLoadingScreenForLoader2();
+}
 
-  const displayCityName = document.getElementById("city-name") as HTMLElement;
-  displayCityName.innerHTML = `<h1>${coObject.name}</h1>`;
+function renderCityTitle() {
+  const display = document.getElementById("city-name") as HTMLElement;
+  display.innerHTML = `<h1>${globalObject.name}!</h1>`;
+}
 
-  renderCardChildren();
+export function whichButtonPressed(ButtonId: string) {
+  if (ButtonId === "chooseCity") {
+    const cityInput = document.querySelector<HTMLInputElement>("#city-label")!;
+    gCity = cityInput.value;
+    if (gCity === "") {
+      gCity = "new york";
+    }
+  } else {
+    gCity = cityNames[Math.floor(Math.random() * cityNames.length)];
+  }
+}
+
+function hideLoadingScreenForLoader2() {
+  const loader2 = document.querySelector<HTMLDivElement>("#loader2");
+  if (loader2) {
+    loader2.style.display = "none";
+  }
+}
+function hideLoadingScreenForLoader3() {
+  const loader3 = document.querySelector<HTMLDivElement>("#loader3");
+  if (loader3) {
+    loader3.style.display = "none";
+  }
+}
+function applyLoadingScreenForLoader3() {
+  const loader3 = document.querySelector<HTMLDivElement>("#loader3");
+  if (loader3) {
+    loader3.style.display = "block";
+  }
 }

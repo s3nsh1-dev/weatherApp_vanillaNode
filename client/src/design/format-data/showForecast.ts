@@ -1,5 +1,5 @@
 import fetchingURL from "../../fetching/primaryFetch";
-import image from "../../../public/images/weather-app.png";
+import image from "../../assets/images/weather-app.png";
 
 let unit: string = `celsius`;
 const celsiusSymbol = `°C`;
@@ -19,7 +19,6 @@ export default async function showForecast(fresh_URL: string) {
   const data_API: any = await response.json();
 
   const finalForeStructure = prepareForecastObject(data_API.daily);
-  console.log("Final Forecast Structure: ", finalForeStructure);
 
   let cardsHTML = ``;
   for (let i of finalForeStructure) {
@@ -66,7 +65,6 @@ function correctUnit(fresh_URL: string) {
       const activeRadio = document.querySelector(
         'input[name="tempUnit"]:checked'
       )!;
-      console.log("Active unit:", activeRadio.id);
       unit = activeRadio.id;
       // Re-render the weather cards immediately
       showForecast(fresh_URL);

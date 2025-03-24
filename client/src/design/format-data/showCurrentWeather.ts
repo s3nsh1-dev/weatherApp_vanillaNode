@@ -1,9 +1,9 @@
-import afternoon from "../../../public/images/afternoon.jpg";
-import midnight from "../../../public/images/midnight.jpg";
-import night from "../../../public/images/night.jpg";
-import morning from "../../../public/images/morning.jpg";
-import evening from "../../../public/images/evening.png";
-import dawn from "../../../public/images/dawn.jpg";
+import afternoon from "../../assets/images/afternoon.jpg";
+import midnight from "../../assets/images/midnight.jpg";
+import night from "../../assets/images/night.jpg";
+import morning from "../../assets/images/morning.jpg";
+import evening from "../../assets/images/evening.png";
+import dawn from "../../assets/images/dawn.jpg";
 import fetchingURL from "../../fetching/primaryFetch";
 
 let unit: string = `celsius`;
@@ -91,7 +91,6 @@ export default async function showCurrentWeather(fresh_URL: string) {
   const response: Response = await fetchingURL(fresh_URL);
   const data_API: any = await response.json();
   const finalTimeObject: timeType[] = prepareTimeObject(data_API);
-  console.log("Time Array : ", finalTimeObject);
 
   let cardsHTML = "";
   for (let i = 0; i < 6; i++) {
@@ -127,7 +126,6 @@ function correctUnit(fresh_URL: string) {
       const activeRadio = document.querySelector(
         'input[name="tempUnit"]:checked'
       )!;
-      console.log("Active unit:", activeRadio.id);
       unit = activeRadio.id;
       // Re-render the weather cards immediately
       showCurrentWeather(fresh_URL);
