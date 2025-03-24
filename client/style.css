@@ -5,7 +5,7 @@
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 html {
-  background-image: url("./images/weatherApp_background.jpg");
+  background-image: url("./src//assets/images/weatherApp_background.jpg");
 }
 #header {
   display: flex;

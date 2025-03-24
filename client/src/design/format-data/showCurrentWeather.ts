@@ -1,9 +1,9 @@
-import afternoon from "../../../public/images/afternoon.jpg";
-import midnight from "../../../public/images/midnight.jpg";
-import night from "../../../public/images/night.jpg";
-import morning from "../../../public/images/morning.jpg";
-import evening from "../../../public/images/evening.png";
-import dawn from "../../../public/images/dawn.jpg";
+import afternoon from "../../assets/images/afternoon.jpg";
+import midnight from "../../assets/images/midnight.jpg";
+import night from "../../assets/images/night.jpg";
+import morning from "../../assets/images/morning.jpg";
+import evening from "../../assets/images/evening.png";
+import dawn from "../../assets/images/dawn.jpg";
 import fetchingURL from "../../fetching/primaryFetch";
 
 let unit: string = `celsius`;

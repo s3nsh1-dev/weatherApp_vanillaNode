@@ -1,5 +1,5 @@
 import fetchingURL from "../../fetching/primaryFetch";
-import image from "../../../public/images/weather-app.png";
+import image from "../../assets/images/weather-app.png";
 
 let unit: string = `celsius`;
 const celsiusSymbol = `°C`;
